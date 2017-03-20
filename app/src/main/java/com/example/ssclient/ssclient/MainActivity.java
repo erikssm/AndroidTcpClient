@@ -42,6 +42,8 @@ public class MainActivity extends Activity {
         imgBtn = (ImageButton) findViewById(R.id.imageButton);
         imgBtn.setBackgroundResource(R.drawable.inactive_circle);
 
+        setupUI();
+
         imgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,9 +93,21 @@ public class MainActivity extends Activity {
         bManager.registerReceiver(bReceiver, intentFilter);
     }
 
+    private void setupUI() {
+        imgBtn.setBackgroundResource(R.drawable.inactive_circle);
+        mText.setText( "INACTIVE" );
+        mText.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.inactiveColor));
+        mTapToActivate.setVisibility(View.VISIBLE);
+
+        mStatus.setText("connecting..");
+        mStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.inactiveColor));
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        setupUI();
 
         NetService.doCheckStatus(MainActivity.this, "", "");
     }
