@@ -144,6 +144,8 @@ public class MainActivity extends Activity {
             mText.setText( "ACTIVE" );
             mText.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.fgColor));
             mTapToActivate.setVisibility(View.INVISIBLE);
+            mStatus.setText("connected");
+            mStatus.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.colorTextSuccess));
         } else {
             imgBtn.setBackgroundResource(R.drawable.inactive_circle);
             mText.setText( "INACTIVE" );
